@@ -1,0 +1,12 @@
+.country-card {
+    display: inline-block;
+    margin-top: 10px;
+    max-width: 300px;
+    margin-right: 10px;
+  }
+  .mat-header{
+      height: 30px;
+      text-align: center;
+      background-color:cornflowerblue;
+      color: white;
+  }

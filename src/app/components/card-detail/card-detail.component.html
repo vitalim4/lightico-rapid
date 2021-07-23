@@ -1,0 +1,27 @@
+
+    <mat-card class="country-card">
+        <mat-card-header class="mat-header">
+          <mat-card-title>{{country.country}}</mat-card-title>
+          <mat-card-subtitle>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+              Last Update Date: {{formatDate(country.lastUpdate)}}</p>
+          <p>
+              Deaths: {{country.deaths}}
+          </p>
+          <p>
+              Confirmed: {{country.confirmed}}</p>
+          <p>
+              Recovered: {{country.recovered}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button [disabled] ="checkIfExistsInFavorites()" (click)="addToFavorites()">
+            ADD TO FAVORITES
+          </button>
+          <button mat-button>STATUS BY DATE</button>
+        </mat-card-actions>
+      </mat-card>
+
