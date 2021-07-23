@@ -17,7 +17,6 @@ export class PopularComponent implements OnInit {
   constructor(private countriesService: CountriesService) { }
 
   ngOnInit() {
-    //this.countries = JSON.parse(localStorage.getItem('countriesData'));
     this.countries = this.countriesService.getPopularCountries();
 
     if(this.countries === null){
