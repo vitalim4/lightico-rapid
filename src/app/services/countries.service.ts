@@ -18,7 +18,6 @@ export class CountriesService {
     .set('name', countryName);
 
     return this.httpClient.get<Country[]>(this.BASE_API + "/country", {params}).pipe(
-      retry(1),
       catchError(this.handleError)
     );
   }
