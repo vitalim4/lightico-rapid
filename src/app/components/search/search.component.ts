@@ -15,7 +15,11 @@ export class SearchComponent implements OnInit {
   }
 
   searchCountry(){
-    this.router.navigate(['/search/result', this.searchValue]);
+    if(this.searchValue){
+      this.router.navigate(['/search/result', this.searchValue]);
+    }
+    else{return;}
+    
   }
 
 }

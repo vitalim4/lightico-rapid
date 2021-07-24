@@ -12,13 +12,17 @@ import { MatToolbarModule,
   MatButtonModule,
   MatProgressSpinnerModule, 
   MatInputModule,
-  MatFormFieldModule} from '@angular/material';
+  MatFormFieldModule,
+  MatDatepickerModule,
+  MatNativeDateModule} from '@angular/material';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderInterceptor } from './interceptor/request-interceptor';
 import { CardDetailComponent } from './components/card-detail/card-detail.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './components/search/search.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
+import { DateStatusComponent } from './components/date-status/date-status.component';
+import { CardDateStatusComponent } from './components/date-status/card-date-status/card-date-status.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,9 @@ import { SearchResultComponent } from './components/search-result/search-result.
     FavoritesComponent,
     CardDetailComponent,
     SearchComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    DateStatusComponent,
+    CardDateStatusComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,10 @@ import { SearchResultComponent } from './components/search-result/search-result.
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule, 
+    MatDatepickerModule,
+    MatNativeDateModule,   
+    ReactiveFormsModule
   ],
   providers: [ { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true }],
   bootstrap: [AppComponent]

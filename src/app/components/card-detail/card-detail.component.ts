@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Country } from 'src/app/models/country.model';
 import { CountriesService } from 'src/app/services/countries.service';
 
@@ -11,7 +12,7 @@ export class CardDetailComponent implements OnInit {
   @Input()
   country: Country | undefined;
 
-  constructor(private countriesService: CountriesService) { }
+  constructor(private countriesService: CountriesService,private router: Router) { }
 
   ngOnInit() {
   }
@@ -29,6 +30,10 @@ export class CardDetailComponent implements OnInit {
 
   addToFavorites(){
     this.countriesService.setFavoritesStorage(this.country);
+  }
+
+  getStatusByDate(){
+    this.router.navigate(['/date/status/',this.country.country])
   }
 
 }

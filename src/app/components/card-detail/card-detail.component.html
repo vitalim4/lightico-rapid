@@ -18,10 +18,10 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button [disabled] ="checkIfExistsInFavorites()" (click)="addToFavorites()">
+          <button mat-button *ngIf ="!checkIfExistsInFavorites()" (click)="addToFavorites()">
             ADD TO FAVORITES
           </button>
-          <button mat-button>STATUS BY DATE</button>
+          <button mat-button (click)="getStatusByDate()">STATUS BY DATE</button>
         </mat-card-actions>
       </mat-card>
 

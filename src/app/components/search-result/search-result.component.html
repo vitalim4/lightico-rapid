@@ -1,1 +1,7 @@
+
+<div *ngIf="countryNotFound" class="error-msg">
+    No Results
+</div>
+<div *ngIf="spinner"><mat-spinner class="spinner"></mat-spinner></div>
+
 <app-card-detail *ngFor='let country of countries' [country]='country'></app-card-detail>

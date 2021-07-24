@@ -2,26 +2,35 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { forkJoin, of, Subscription, throwError, timer } from 'rxjs';
 import { catchError, delay, filter, map, retry, switchMap, takeWhile } from 'rxjs/operators';
-import { Country } from '../models/country.model';
+import { Country, StatusDate } from '../models/country.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CountriesService {
 
-  private REST_API_COUNTRY= "https://covid-19-data.p.rapidapi.com/country";
-
-
+  private BASE_API = "https://covid-19-data.p.rapidapi.com";
+  
   constructor(private httpClient: HttpClient) { }
 
-  public getCountryByName(countryName){
+  getCountryByName(countryName){
     const params = new HttpParams()
     .set('name', countryName);
 
-    return this.httpClient.get<Country[]>(this.REST_API_COUNTRY, {params}).pipe(
+    return this.httpClient.get<Country[]>(this.BASE_API + "/country", {params}).pipe(
       retry(1),
       catchError(this.handleError)
-  );
+    );
+  }
+
+  getCountryByStatusDate(countryName: string, date: string){
+    const params = new HttpParams()
+    .set('name', countryName)
+    .set('date', date);
+
+    return this.httpClient.get<StatusDate>(this.BASE_API + "/report/country/name", {params}).pipe(
+      catchError(this.handleError)
+    );
   }
 
   setCountryStorage(countries: Country[]){
